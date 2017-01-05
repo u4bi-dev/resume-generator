@@ -117,3 +117,12 @@ footer a{
   font-weight: 700;
   color: #333;
 }
+
+/* @ SVG 아이콘
+*/
+a:hover svg path{
+  fill:#333;
+  -webkit-transition:all 0.2s ease;
+  -moz-transition:all 0.2s ease;
+  transition:all 0.2s ease;
+}

@@ -1,0 +1,24 @@
+{
+  "name": "rg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "rollup.config.js",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/u4bi-dev/resume-generate.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/u4bi-dev/resume-generate/issues"
+  },
+  "homepage": "https://github.com/u4bi-dev/resume-generate#readme",
+  "devDependencies": {
+    "rollup": "^0.49.2",
+    "rollup-plugin-typescript": "^0.8.1"
+  }
+}

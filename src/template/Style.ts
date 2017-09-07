@@ -33,6 +33,15 @@ export default function Style(){
         font-size: 2.4rem;
         font-weight: 900;
         }
+        
+        .top-avatar {
+            width: 95px;
+            max-width: 100%;
+            overflow: hidden;
+            border-radius : 100px;
+            margin: 0 auto;
+            display: block;
+        }
 
         .top-bar{
         border-top: 4px solid #c7c7c7;

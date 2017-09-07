@@ -29,6 +29,9 @@ export default function Template(data) {
 
     return ` 
         <header class="top-header">
+        
+        <img src="${ data.avatar }" class="top-avatar">
+        
         <h1>${ data.name }</h1>
         <div class="top-bar">
             <h2>${ data.job }</h2>

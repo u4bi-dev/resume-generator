@@ -1,94 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <title>user.name</title>
-  <link rel="stylesheet" href="style.css"/>
-  <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <title> Resume </title>
+
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    
+    <script src="dist/resume.js"></script>
+
   </head>
   <body>
-    
-    <div class="wrapper">
-      <!-- 상단 헤더 -->
-      <header class="top-header">
-        <h1>user.name</h1>
-        <div class="top-bar">
-          <h2>user.jab</h2>
-          <ul>
-          	<li>
-              <a href="user.icon.link[0]" itemprop="url" target="_blank">
-            
-                <svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                  viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve" width="28">
-                
-                  <path fill-rule="evenodd" clip-rule="evenodd" fill="#D1CECC" d="user.icon.link[0]"/>
-                
-                </svg>
+      
+      <div id="resume"></div>
 
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div class="top-content"><p>user.bio</p></div>
-      </header>
-    
-      <!-- 프로젝트 섹션 -->
-      <section>
-        <header>
-          <h2>Projects</h2>
-        </header>
-        <div>
-          <h3>project.name</a></h3>
-          <h4>project.charge &bull; project.start_date &mdash; project.end_date</h4>
-          <p>project.bio</p>
-        </div>
-      </section>
+      <script>
+          axios.get('./data.json').then( (resp) => {
+                           
+              const data = resp.data,
+                    element = document.getElementById('resume');
 
-      <section>
-        <header>
-          <h2>Skills</h2>
-        </header>
-        <div>
-          <h4>skill.title</h4>
-          <p><span>skill.name</span></p>
-        </div>
-      </section>
+              const resume = new Resume(element);
 
+              resume.render(data);
 
-      <!-- 경험 섹션 -->
-      <section>
-        <header>
-          <h2>Experience</h2>
-        </header>
-        <div>
-          <h3>exper.name</h3>
-          <h4>exper.charge &bull; exper.start_date &mdash; exper.end_date - exper.address</h4>
-          <ul>
-            <li>exper.bio</li>
-          </ul>
-        </div>
-      </section>
+          });
 
-
-      <!-- 교육 및 인증 섹션 -->
-      <section>
-        <header>
-          <h2>Education and Certification</h2>
-        </header>
-        <div>
-          <h3>edu.title</h3>
-          <h4>edu.name &bull; edu.start.date - edu.end.date</h4>
-          <h3>cert.title</h3>
-          <h4>cert.name &bull; cert.date</h4>
-        </div>
-      </section>
-
-
-      <!-- 하단 푸터 -->
-      <footer>
-        <p><a href="mailto:user@mail.com">contact me</a>.</p>
-        <p>Made by <a href="https://github.com/u4bi">@u4bi</a>. Fork me on <a href="https://github.com/u4bi-dev/resume">GitHub</a>.</p>
-      </footer>
-
-    </div>
+      </script>
   </body>
 </html>

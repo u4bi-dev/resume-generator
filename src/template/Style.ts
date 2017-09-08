@@ -8,7 +8,7 @@ export default function Style(){
         .top-content{ font-size:1.125rem }
         }
         *{ box-sizing: border-box; }
-
+        
         body{
         display: block;
         color: #333;
@@ -70,6 +70,28 @@ export default function Style(){
         display: inline-block;
         margin-left: 5px;
         }
+
+        .top-button{
+        border-radius : 3px;
+        background-color: #efefef;
+        text-decoration: none;
+        text-align: center;
+        display: block;
+        margin: 1.2rem auto;
+        width: 220px;
+        font-size: 1.375rem;
+        color: #333;
+        line-height: 55px;        
+        -webkit-transition:all 0.2s ease;
+        -moz-transition:all 0.2s ease;
+        transition:all 0.2s ease;
+        }
+        
+        .top-button:hover{
+        background-color:#333;
+        color:#fff;
+        }
+
 
         /* @ 섹터단
         */

@@ -22,6 +22,7 @@ npm run build
         "name": "Myungjae Yu",
         "job" : "Frontend Developer",
         "bio" : "A lonely wolf-like developer",
+        "email" : "u4bi@daum.net",
         "icon" : {
             "github"    : "https://github.com/u4bi",
             "linkdin"   : "https://github.com/u4bi",
@@ -86,7 +87,7 @@ npm run build
         ]
     },
     "footer" : {
-        "email" : "u4bi@daum.net"
+        
     }
 }
 

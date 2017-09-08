@@ -49,7 +49,6 @@ function Template$1(data) {
 }
 
 function Footer(data) {
-    // let live = data.live || false;
     function isLive(bool) {
         return !bool ? '<p>Made by <a href="https://github.com/u4bi">@u4bi</a>. Fork me on <a href="https://github.com/u4bi-dev/resume">GitHub Repository</a>.</p>' : '';
     }
@@ -108,8 +107,18 @@ function EduAndCertSection(data) {
     return "\n        <section>\n        <header>\n            <h2>Education and Certification</h2>\n        </header>\n        " + item() + "\n        </section>           \n    ";
 }
 
+function BuilderStyle() {
+    return "\n    <style>\n        .builder-wrapper{\n            position:fixed;       \n            bottom:0;\n            right:0;\n            color: #fff;\n            text-align:center;\n            width: 50px;\n            height: 50px;\n            -webkit-transition:all .2s;\n                    transition:all .2s;            \n        }\n\n        .builder-wrapper:hover{\n            background-color: rgba(0,0,0,0.6);\n            -webkit-box-shadow: 2px 2px 2px 2px #000;            \n                    box-shadow: 2px 2px 2px 2px #000;   \n            width: 220px;\n            height: 110px;                     \n        }\n\n        .builder-json{\n            font-weight: 550;\n            line-height: 55px;\n            -webkit-transition:all 0.2s ease;\n                    transition:all 0.2s ease;\n            width:90%;\n        }\n        .builder-json:hover{\n            background-color:rgba(0,0,0,0.7);\n            cursor: pointer;\n        }\n\n        .builder-wrapper input{ \n            color:#fff;\n            border: 0;\n            outline:none;\n        }\n        \n        .builder-json,\n        .builder-wrapper input{\n            margin:auto;\n            margin-top:10px;\n            border-radius : 3px;\n            background-color: #333;\n            text-decoration: none;                        \n        }\n                            \n    </style>      \n    ";
+}
+
+function Builder(data) {
+    console.log('builder data', data);
+    return "\n        " + BuilderStyle() + "\n        <div class=\"builder-wrapper\">\n            <div class=\"builder-json\">JSON\uC73C\uB85C \uB370\uC774\uD130 \uCD9C\uB825\uBC1B\uAE30</div>\n            <input class=\"builder-json-copy\">\n        </div>\n    ";
+}
+
 function Template(data) {
-    return "\n        " + Style() + "\n        <div class=\"wrapper\">\n          <!-- \uC0C1\uB2E8 \uD5E4\uB354 -->\n          " + Template$1(data.header) + "\n          <!-- \uD504\uB85C\uC81D\uD2B8 \uC139\uC158 -->\n          " + ProjectSection(data.projects) + "\n          <!-- \uAE30\uC220 \uC139\uC158 -->\n          " + SkillSection(data.skills) + "\n          <!-- \uACBD\uD5D8 \uC139\uC158 -->\n          " + ExperienceSection(data.experience) + " \n          <!-- \uAD50\uC721 \uBC0F \uC778\uC99D \uC139\uC158 -->\n          " + EduAndCertSection(data.eduandcert) + "\n          <!-- \uD558\uB2E8 \uD478\uD130 -->\n          " + Footer(data.footer) + "\n\n        </div>        \n        ";
+    var isLive = function (bool) { return !bool ? Builder(data) : ''; };
+    return "\n        " + Style() + "\n        <div class=\"wrapper\">\n          <!-- \uC0C1\uB2E8 \uD5E4\uB354 -->\n          " + Template$1(data.header) + "\n          <!-- \uD504\uB85C\uC81D\uD2B8 \uC139\uC158 -->\n          " + ProjectSection(data.projects) + "\n          <!-- \uAE30\uC220 \uC139\uC158 -->\n          " + SkillSection(data.skills) + "\n          <!-- \uACBD\uD5D8 \uC139\uC158 -->\n          " + ExperienceSection(data.experience) + " \n          <!-- \uAD50\uC721 \uBC0F \uC778\uC99D \uC139\uC158 -->\n          " + EduAndCertSection(data.eduandcert) + "\n          <!-- \uD558\uB2E8 \uD478\uD130 -->\n          " + Footer(data.footer) + "\n          <!-- \uBE4C\uB354 -->\n          " + isLive(data.footer.live) + "\n        </div>        \n        ";
 }
 
 var Resume$1 = (function (_super) {

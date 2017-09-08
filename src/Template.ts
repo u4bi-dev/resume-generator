@@ -5,9 +5,12 @@ import ProjectSection from './template/ProjectSection';
 import SkillSection from './template/SkillSection';
 import ExperienceSection from './template/ExperienceSection';
 import EduAndCertSection from './template/EduAndCertSection';
+import Builder from './template/Builder';
 
 export default function Template(data) {
-  
+
+    const isLive = (bool) => !bool ? Builder(data) : '';
+    
     return `
         ${ Style() }
         <div class="wrapper">
@@ -23,7 +26,8 @@ export default function Template(data) {
           ${ EduAndCertSection(data.eduandcert) }
           <!-- 하단 푸터 -->
           ${ Footer(data.footer) }
-
+          <!-- 빌더 -->
+          ${ isLive(data.footer.live) }
         </div>        
         `;
 }

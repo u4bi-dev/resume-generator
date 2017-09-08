@@ -17,7 +17,9 @@ export default function Builder(element, data) {
         load.addEventListener('click', () => {
 
             let json = prompt('불러오실 JSON 데이터를 등록해주세요', '');            
-            if(json === null || json === '') throw 'invalid JSON string';
+            if(json === null) return;
+
+            json = json !== '' ? json : '{}';
 
             element.innerHTML = Template(element, JSON.parse(json));
             copy.value = '';

@@ -9,25 +9,25 @@ import Builder from './template/Builder';
 
 export default function Template(element, data) {
 
-    const isLive = (bool) => !bool ? Builder(element ,data) : '';
+    const isLive = (bool) => !bool.live ? Builder(element ,data) : '';
     
     return `
         ${ Style() }
         <div class="wrapper">
           <!-- 상단 헤더 -->
-          ${ Header(data.header) }
+          ${ Header(data.header || {} ) }
           <!-- 프로젝트 섹션 -->
-          ${ ProjectSection(data.projects) }
+          ${ ProjectSection(data.projects || [] ) }
           <!-- 기술 섹션 -->
-          ${ SkillSection(data.skills) }
+          ${ SkillSection(data.skills || [] ) }
           <!-- 경험 섹션 -->
-          ${ ExperienceSection(data.experience) } 
+          ${ ExperienceSection(data.experience || [] ) } 
           <!-- 교육 및 인증 섹션 -->
-          ${ EduAndCertSection(data.eduandcert) }
+          ${ EduAndCertSection(data.eduandcert || {} ) }
           <!-- 하단 푸터 -->
-          ${ Footer(data.footer) }
+          ${ Footer(data.footer || {} ) }
           <!-- 빌더 -->
-          ${ isLive(data.footer.live) }
+          ${ isLive(data.footer || {} ) }
         </div>        
         `;
 }

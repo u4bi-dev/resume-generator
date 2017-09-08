@@ -45,7 +45,7 @@ function Template$1(data) {
         });
         return result;
     }
-    return " \n        <header class=\"top-header\">\n        \n        <img src=\"" + data.avatar + "\" class=\"top-avatar\">\n        \n        <h1>" + data.name + "</h1>\n        <div class=\"top-bar\">\n            <h2>" + data.job + "</h2>\n            <ul>\n                " + icon(data.icon) + "\n            </ul>\n        </div>\n        <div class=\"top-content\"><p>" + data.bio + "</p></div>\n        \n        <a class=\"top-button\" href=\"mailto:" + data.email + "\">contact me</a>\n\n        </header>\n    ";
+    return " \n        <header class=\"top-header\">\n        \n        <img src=\"" + (data.avatar || '') + "\" class=\"top-avatar\">\n        \n        <h1>" + (data.name || '') + "</h1>\n        <div class=\"top-bar\">\n            <h2>" + (data.job || '') + "</h2>\n            <ul>\n                " + icon(data.icon || {}) + "\n            </ul>\n        </div>\n        <div class=\"top-content\"><p>" + (data.bio || '') + "</p></div>\n        \n        <a class=\"top-button\" href=\"mailto:" + (data.email || '') + "\">contact me</a>\n\n        </header>\n    ";
 }
 
 function Footer(data) {
@@ -59,7 +59,7 @@ function ProjectSection(data) {
     function item() {
         var result = '';
         data.map(function (data) {
-            var html = "\n                <div>\n                    <h3>" + data.name + "</a></h3>\n                    <h4>" + data.date.start + " &mdash; " + data.date.end + "</h4>\n                    <p>" + data.bio + "</p>\n                </div>\n            ";
+            var html = "\n                <div>\n                    <h3>" + (data.name || '') + "</a></h3>\n                    <h4>" + (data.date = data.date || {}, data.date.start || '') + " &mdash; " + (data.date.end || '') + "</h4>\n                    <p>" + (data.bio || '') + "</p>\n                </div>\n            ";
             result += html;
         });
         return result;
@@ -71,7 +71,7 @@ function SkillSection(data) {
     function item() {
         var result = '';
         data.map(function (data) {
-            var html = "\n                <div>\n                    <h4>" + data.title + "</h4>\n                    <p><span>" + data.entry + "</span></p>\n                </div>\n            ";
+            var html = "\n                <div>\n                    <h4>" + (data.title || '') + "</h4>\n                    <p><span>" + (data.entry || '') + "</span></p>\n                </div>\n            ";
             result += html;
         });
         return result;
@@ -83,7 +83,7 @@ function ExperienceSection(data) {
     function item() {
         var result = '';
         data.map(function (data) {
-            var html = "\n                <div>\n                    <h3>" + data.name + "</a></h3>\n                    <h4>" + data.date.start + " &mdash; " + data.date.end + " - " + data.address + "</h4>\n                    <ul>\n                        <li>" + data.bios + "</li>\n                    </ul>\n                </div>\n            ";
+            var html = "\n                <div>\n                    <h3>" + (data.name || '') + "</a></h3>\n                    <h4>" + (data.date = data.date || {}, data.date.start || '') + " &mdash; " + (data.date.end || '') + " - " + (data.address || '') + "</h4>\n                    <ul>\n                        <li>" + (data.bios || []) + "</li>\n                    </ul>\n                </div>\n            ";
             result += html;
         });
         return result;
@@ -94,15 +94,17 @@ function ExperienceSection(data) {
 function EduAndCertSection(data) {
     function item() {
         var edu = '', cert = '';
+        data.edu = data.edu || [];
+        data.cert = data.cert || [];
         data.edu.map(function (data) {
-            var html = "\n                 <h3>" + data.title + "</h3>\n                 <h4>" + data.name + " &bull; " + data.date.start + " - " + data.date.end + "</h4>\n             ";
+            var html = "\n                 <h3>" + (data.title || '') + "</h3>\n                 <h4>" + (data.name || '') + " &bull; " + (data.date = data.date || {}, data.date.start || '') + " - " + (data.date.end || '') + "</h4>\n             ";
             edu += html;
         });
         data.cert.map(function (data) {
-            var html = "\n                <h3>" + data.title + "</h3>\n                <h4>" + data.name + " &bull; " + data.date + "</h4>\n            ";
+            var html = "\n                <h3>" + (data.title || '') + "</h3>\n                <h4>" + (data.name || '') + " &bull; " + (data.date || '') + "</h4>\n            ";
             cert += html;
         });
-        return "\n            <div>\n                " + edu + "\n                " + cert + "\n            </div>         \n        ";
+        return "\n            <div>\n                " + (edu || '') + "\n                " + (cert || '') + "\n            </div>         \n        ";
     }
     return "\n        <section>\n        <header>\n            <h2>Education and Certification</h2>\n        </header>\n        " + item() + "\n        </section>           \n    ";
 }
@@ -119,8 +121,9 @@ function Builder(element, data) {
         copy.addEventListener('click', function (e) { return e.target.setSelectionRange(0, e.target.value.length); });
         load.addEventListener('click', function () {
             var json = prompt('불러오실 JSON 데이터를 등록해주세요', '');
-            if (json === null || json === '')
-                throw 'invalid JSON string';
+            if (json === null)
+                return;
+            json = json !== '' ? json : '{}';
             element.innerHTML = Template(element, JSON.parse(json));
             copy.value = '';
         });
@@ -129,8 +132,8 @@ function Builder(element, data) {
 }
 
 function Template(element, data) {
-    var isLive = function (bool) { return !bool ? Builder(element, data) : ''; };
-    return "\n        " + Style() + "\n        <div class=\"wrapper\">\n          <!-- \uC0C1\uB2E8 \uD5E4\uB354 -->\n          " + Template$1(data.header) + "\n          <!-- \uD504\uB85C\uC81D\uD2B8 \uC139\uC158 -->\n          " + ProjectSection(data.projects) + "\n          <!-- \uAE30\uC220 \uC139\uC158 -->\n          " + SkillSection(data.skills) + "\n          <!-- \uACBD\uD5D8 \uC139\uC158 -->\n          " + ExperienceSection(data.experience) + " \n          <!-- \uAD50\uC721 \uBC0F \uC778\uC99D \uC139\uC158 -->\n          " + EduAndCertSection(data.eduandcert) + "\n          <!-- \uD558\uB2E8 \uD478\uD130 -->\n          " + Footer(data.footer) + "\n          <!-- \uBE4C\uB354 -->\n          " + isLive(data.footer.live) + "\n        </div>        \n        ";
+    var isLive = function (bool) { return !bool.live ? Builder(element, data) : ''; };
+    return "\n        " + Style() + "\n        <div class=\"wrapper\">\n          <!-- \uC0C1\uB2E8 \uD5E4\uB354 -->\n          " + Template$1(data.header || {}) + "\n          <!-- \uD504\uB85C\uC81D\uD2B8 \uC139\uC158 -->\n          " + ProjectSection(data.projects || []) + "\n          <!-- \uAE30\uC220 \uC139\uC158 -->\n          " + SkillSection(data.skills || []) + "\n          <!-- \uACBD\uD5D8 \uC139\uC158 -->\n          " + ExperienceSection(data.experience || []) + " \n          <!-- \uAD50\uC721 \uBC0F \uC778\uC99D \uC139\uC158 -->\n          " + EduAndCertSection(data.eduandcert || {}) + "\n          <!-- \uD558\uB2E8 \uD478\uD130 -->\n          " + Footer(data.footer || {}) + "\n          <!-- \uBE4C\uB354 -->\n          " + isLive(data.footer || {}) + "\n        </div>        \n        ";
 }
 
 var Resume$1 = (function (_super) {

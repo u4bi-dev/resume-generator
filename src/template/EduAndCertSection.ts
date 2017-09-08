@@ -4,11 +4,14 @@ export default function EduAndCertSection(data) {
         
         let edu = '',
             cert = '';
+        
+        data.edu = data.edu || [];
+        data.cert = data.cert || [];
 
         data.edu.map( (data) => { 
             let html = `
-                 <h3>${ data.title }</h3>
-                 <h4>${ data.name } &bull; ${ data.date.start } - ${ data.date.end }</h4>
+                 <h3>${ data.title || '' }</h3>
+                 <h4>${ data.name || '' } &bull; ${ data.date = data.date || {} , data.date.start || '' } - ${ data.date.end || '' }</h4>
              `;
 
             edu += html;
@@ -16,8 +19,8 @@ export default function EduAndCertSection(data) {
 
         data.cert.map( (data) => { 
             let html = `
-                <h3>${ data.title }</h3>
-                <h4>${ data.name } &bull; ${ data.date }</h4>
+                <h3>${ data.title || '' }</h3>
+                <h4>${ data.name || '' } &bull; ${ data.date || '' }</h4>
             `;
 
             cert += html;            
@@ -25,8 +28,8 @@ export default function EduAndCertSection(data) {
         
         return `
             <div>
-                ${ edu }
-                ${ cert }
+                ${ edu || '' }
+                ${ cert || '' }
             </div>         
         `;
 

@@ -8,9 +8,9 @@ export default function ProjectSection(data) {
             
             let html = `
                 <div>
-                    <h3>${ data.name }</a></h3>
-                    <h4>${ data.date.start } &mdash; ${ data.date.end }</h4>
-                    <p>${ data.bio }</p>
+                    <h3>${ data.name || '' }</a></h3>
+                    <h4>${ data.date = data.date || {} , data.date.start || '' } &mdash; ${ data.date.end || '' }</h4>
+                    <p>${ data.bio || '' }</p>
                 </div>
             `;
 

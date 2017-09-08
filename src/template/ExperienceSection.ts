@@ -8,10 +8,10 @@ export default function ExperienceSection(data) {
             
             let html = `
                 <div>
-                    <h3>${ data.name }</a></h3>
-                    <h4>${ data.date.start } &mdash; ${ data.date.end } - ${ data.address }</h4>
+                    <h3>${ data.name || '' }</a></h3>
+                    <h4>${ data.date = data.date || {} , data.date.start || '' } &mdash; ${ data.date.end || '' } - ${ data.address || '' }</h4>
                     <ul>
-                        <li>${ data.bios }</li>
+                        <li>${ data.bios || [] }</li>
                     </ul>
                 </div>
             `;

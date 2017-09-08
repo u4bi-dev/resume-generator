@@ -8,8 +8,8 @@ export default function SkillSection(data) {
             
             let html = `
                 <div>
-                    <h4>${ data.title }</h4>
-                    <p><span>${ data.entry }</span></p>
+                    <h4>${ data.title || '' }</h4>
+                    <p><span>${ data.entry || '' }</span></p>
                 </div>
             `;
 

@@ -30,18 +30,18 @@ export default function Template(data) {
     return ` 
         <header class="top-header">
         
-        <img src="${ data.avatar }" class="top-avatar">
+        <img src="${ data.avatar || '' }" class="top-avatar">
         
-        <h1>${ data.name }</h1>
+        <h1>${ data.name || '' }</h1>
         <div class="top-bar">
-            <h2>${ data.job }</h2>
+            <h2>${ data.job || '' }</h2>
             <ul>
-                ${ icon(data.icon) }
+                ${ icon(data.icon || {} ) }
             </ul>
         </div>
-        <div class="top-content"><p>${ data.bio }</p></div>
+        <div class="top-content"><p>${ data.bio || '' }</p></div>
         
-        <a class="top-button" href="mailto:${ data.email }">contact me</a>
+        <a class="top-button" href="mailto:${ data.email || '' }">contact me</a>
 
         </header>
     `;

@@ -22,29 +22,34 @@ export default function Builder(element, data) {
             put.focus();
         });
 
-        success.addEventListener('click', () => {
-            
-            element.innerHTML = Template(element, Loader(put.value));
-            
+        success.addEventListener('click', () => bind());
+
+        put.addEventListener('keyup', (e) => {
+            if(e.keyCode === 13) bind();
+        });
+
+
+        function bind(){
+            element.innerHTML = Template(element, Loader(put.value));            
+
             success.parentElement.style.display = 'none';
             copy.value = '';
-
-        });
+        }
 
     }, 100);
     
     return `
         ${ BuilderStyle() }
         <div class="builder-wrapper">
-            <div class="builder-json get">JSON으로 데이터 출력받기</div>
+            <div class="builder-json get">JSON Current Data</div>
             <input>
-            <div class="builder-json load">데이터 불러오기</div>            
+            <div class="builder-json load">Load Data</div>            
         </div>
 
         <div class="builder-prompt">
-            <p>JSON 데이터를 등록해주세요</p>
+            <p>Please enter your JSON Data</p>
             <input placeholder="HTTP Link or JSON Object">
-            <p class="success">확인</p>
+            <p class="success">Confirm</p>
         </div>
     `;
 }

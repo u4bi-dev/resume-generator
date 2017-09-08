@@ -9,11 +9,12 @@ export default function Style(){
         }
         *{ box-sizing: border-box; }
         
-        body{
+        :host{
         display: block;
         color: #333;
         line-height: 1.5;
         margin:0;
+        font-family : Arial, Helvetica, sans-serif;        
         }
 
         .wrapper {
@@ -26,12 +27,12 @@ export default function Style(){
         */
         .top-header{
         padding: 1.5rem 0; 
-        }
-
+        }     
+    
         .top-header h1{
         text-align: center;
         font-size: 2.4rem;
-        font-weight: 900;
+        font-weight: 900;        
         }
         
         .top-avatar {
@@ -53,7 +54,7 @@ export default function Style(){
         font-size: 1.75rem;
         line-height: 2rem;
         text-align: center;
-        margin: 0 0 .5rem;
+        margin: 0 0 .5rem;        
         }
 
         .top-bar ul{
@@ -70,7 +71,7 @@ export default function Style(){
         display: inline-block;
         margin-left: 5px;
         }
-
+        
         .top-button{
         border-radius : 3px;
         background-color: #efefef;
@@ -160,7 +161,19 @@ export default function Style(){
         -webkit-transition:all 0.2s ease;
         -moz-transition:all 0.2s ease;
         transition:all 0.2s ease;
-        }        
+        }
+        
+        /* @ font Family
+        */
+        .top-header h1,
+        section h2{ 
+        font-family : "Arial Black", Gadget, sans-serif;
+        }
+    
+        section h4{ 
+        font-family : "Courier New", Courier, monospace;	
+        }
+                     
     </style>      
     `;
 

@@ -23,10 +23,10 @@ export default function BuilderStyle(){
             display: none;
             bottom:50%;
             left:50%;
-            margin-bottom: -35px;
+            margin-bottom: -40px;
             margin-left: -110px;
             width: 220px;
-            height: 70px;
+            height: 80px;
             background-color: rgba(0,0,0,0.9);
             -webkit-box-shadow: 2px 2px 2px 2px #000;
                     box-shadow: 2px 2px 2px 2px #000;

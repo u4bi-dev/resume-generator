@@ -21,7 +21,7 @@ npm run build
         "avatar" : "https://avatars3.githubusercontent.com/u/21367010?v=4&s=460",
         "name": "Myungjae Yu",
         "job" : "Frontend Developer",
-        "bio" : "A lonely wolf-like developer",
+        "bio" : "This is the executive summary.",
         "email" : "u4bi@daum.net",
         "icon" : {
             "github"    : "https://github.com/u4bi",

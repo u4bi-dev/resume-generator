@@ -41,7 +41,7 @@ export default function Template(data) {
         </div>
         <div class="top-content"><p>${ data.bio || '' }</p></div>
         
-        <a class="top-button" href="mailto:${ data.email || '' }">contact me</a>
+        <a class="top-button" href="mailto:${ data.email || '' }">Contact me</a>
 
         </header>
     `;

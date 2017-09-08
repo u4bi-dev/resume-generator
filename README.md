@@ -87,7 +87,7 @@ npm run build
         ]
     },
     "footer" : {
-        
+        "live" : false
     }
 }
 

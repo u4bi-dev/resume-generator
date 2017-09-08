@@ -49,7 +49,11 @@ function Template$1(data) {
 }
 
 function Footer(data) {
-    return "\n        <footer>\n        <p>Made by <a href=\"https://github.com/u4bi\">@u4bi</a>. Fork me on <a href=\"https://github.com/u4bi-dev/resume\">GitHub Repository</a>.</p>\n        </footer>\n    ";
+    // let live = data.live || false;
+    function isLive(bool) {
+        return !bool ? '<p>Made by <a href="https://github.com/u4bi">@u4bi</a>. Fork me on <a href="https://github.com/u4bi-dev/resume">GitHub Repository</a>.</p>' : '';
+    }
+    return "\n        <footer>\n        " + isLive(data.live) + "\n        </footer>\n    ";
 }
 
 function ProjectSection(data) {

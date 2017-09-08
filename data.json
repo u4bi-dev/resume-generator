@@ -116,6 +116,6 @@
       ]
     },
     "footer" : {
-      
+        "live": false
     }
 }

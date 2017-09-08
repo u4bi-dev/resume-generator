@@ -83,7 +83,15 @@ function ExperienceSection(data) {
     function item() {
         var result = '';
         data.map(function (data) {
-            var html = "\n                <div>\n                    <h3>" + (data.name || '') + "</a></h3>\n                    <h4>" + (data.date = data.date || {}, data.date.start || '') + " &mdash; " + (data.date.end || '') + " - " + (data.address || '') + "</h4>\n                    <ul>\n                        <li>" + (data.bios || []) + "</li>\n                    </ul>\n                </div>\n            ";
+            var html = "\n                <div>\n                    <h3>" + (data.name || '') + "</a></h3>\n                    <h4>" + (data.date = data.date || {}, data.date.start || '') + " &mdash; " + (data.date.end || '') + " - " + (data.address || '') + "</h4>\n                    <ul>\n                        " + list(data.bios || []) + "\n                    </ul>\n                </div>\n            ";
+            result += html;
+        });
+        return result;
+    }
+    function list(data) {
+        var result = '';
+        data.map(function (data) {
+            var html = "\n                <li>\n                    " + data + "\n                </li>\n            ";
             result += html;
         });
         return result;

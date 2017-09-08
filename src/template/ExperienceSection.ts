@@ -11,12 +11,29 @@ export default function ExperienceSection(data) {
                     <h3>${ data.name || '' }</a></h3>
                     <h4>${ data.date = data.date || {} , data.date.start || '' } &mdash; ${ data.date.end || '' } - ${ data.address || '' }</h4>
                     <ul>
-                        <li>${ data.bios || [] }</li>
+                        ${ list(data.bios || [] ) }
                     </ul>
                 </div>
             `;
 
             result += html;         
+        });
+
+        return result;
+    }
+
+    function list(data){
+        let result = '';
+
+        data.map( (data) => {
+
+            let html = `
+                <li>
+                    ${ data }
+                </li>
+            `;
+
+            result += html;
         });
 
         return result;

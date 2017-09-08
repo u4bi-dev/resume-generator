@@ -7,21 +7,27 @@ export default function Builder(element, data) {
     setTimeout( () => {
         
         let get  = element.querySelector('.builder-json.get'),
-            copy = element.querySelector('.builder-json-copy'),
-            load = element.querySelector('.builder-json.load');
+            copy = element.querySelector('.builder-wrapper input'),
+            load = element.querySelector('.builder-json.load'),
+            put  = element.querySelector('.builder-prompt input'),            
+            success = element.querySelector('.builder-prompt .success');
         
         get.addEventListener('click', () => copy.value = JSON.stringify(data) );
 
         copy.addEventListener('click', (e) => e.target.setSelectionRange(0 , e.target.value.length) );
 
         load.addEventListener('click', () => {
+            success.parentElement.style.display = 'inline';
+            put.focus();
+        });
 
-            let json = prompt('불러오실 JSON 데이터를 등록해주세요', '');            
-            if(json === null) return;
-
-            json = json !== '' ? json : '{}';
+        success.addEventListener('click', () => {
+                         
+            let json = put.value !== '' ? put.value : '{}';
 
             element.innerHTML = Template(element, JSON.parse(json));
+            
+            success.parentElement.style.display = 'none';
             copy.value = '';
 
         });
@@ -32,8 +38,14 @@ export default function Builder(element, data) {
         ${ BuilderStyle() }
         <div class="builder-wrapper">
             <div class="builder-json get">JSON으로 데이터 출력받기</div>
-            <input class="builder-json-copy">
+            <input>
             <div class="builder-json load">데이터 불러오기</div>            
+        </div>
+
+        <div class="builder-prompt">
+            <p>JSON 데이터를 등록해주세요</p>
+            <input placeholder="HTTP Link or JSON Object">
+            <p class="success">확인</p>
         </div>
     `;
 }

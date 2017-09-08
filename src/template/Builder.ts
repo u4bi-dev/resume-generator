@@ -1,9 +1,17 @@
 import BuilderStyle from './BuilderStyle';
 
-export default function Builder(data) {
-
-    console.log('builder data', data);
-
+export default function Builder(element, data) {
+    
+    // TODO : Custom EventListender
+    setTimeout( () => {
+        
+        let get  = element.querySelector('.builder-json'),
+            copy = element.querySelector('.builder-json-copy');
+        
+        get.addEventListener('click', () => copy.value = JSON.stringify(data) );
+        
+    }, 100);
+    
     return `
         ${ BuilderStyle() }
         <div class="builder-wrapper">

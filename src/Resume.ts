@@ -21,7 +21,7 @@ export class Resume extends Renderer {
         if(!this.parent) throw 'invalid parent element';
         
         this.shadowDOM = this.parent.attachShadow({mode: 'open'});
-        this.shadowDOM.innerHTML = Template(this.data);
+        this.shadowDOM.innerHTML = Template(this.shadowDOM, this.data);
 
     }    
     

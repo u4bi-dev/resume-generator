@@ -7,9 +7,9 @@ import ExperienceSection from './template/ExperienceSection';
 import EduAndCertSection from './template/EduAndCertSection';
 import Builder from './template/Builder';
 
-export default function Template(data) {
+export default function Template(element, data) {
 
-    const isLive = (bool) => !bool ? Builder(data) : '';
+    const isLive = (bool) => !bool ? Builder(element ,data) : '';
     
     return `
         ${ Style() }

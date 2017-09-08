@@ -9,7 +9,9 @@ export default function Builder(element, data) {
             copy = element.querySelector('.builder-json-copy');
         
         get.addEventListener('click', () => copy.value = JSON.stringify(data) );
-        
+
+        copy.addEventListener('click', (e) => e.target.setSelectionRange(0 , e.target.value.length) );
+
     }, 100);
     
     return `

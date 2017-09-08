@@ -116,6 +116,7 @@ function Builder(element, data) {
     setTimeout(function () {
         var get = element.querySelector('.builder-json'), copy = element.querySelector('.builder-json-copy');
         get.addEventListener('click', function () { return copy.value = JSON.stringify(data); });
+        copy.addEventListener('click', function (e) { return e.target.setSelectionRange(0, e.target.value.length); });
     }, 100);
     return "\n        " + BuilderStyle() + "\n        <div class=\"builder-wrapper\">\n            <div class=\"builder-json\">JSON\uC73C\uB85C \uB370\uC774\uD130 \uCD9C\uB825\uBC1B\uAE30</div>\n            <input class=\"builder-json-copy\">\n        </div>\n    ";
 }

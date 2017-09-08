@@ -19,7 +19,7 @@ export default function BuilderStyle(){
             -webkit-box-shadow: 2px 2px 2px 2px #000;            
                     box-shadow: 2px 2px 2px 2px #000;   
             width: 220px;
-            height: 110px;                     
+            height: 170px;                     
         }
 
         .builder-json{

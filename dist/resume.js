@@ -108,17 +108,24 @@ function EduAndCertSection(data) {
 }
 
 function BuilderStyle() {
-    return "\n    <style>\n        .builder-wrapper{\n            position:fixed;       \n            bottom:0;\n            right:0;\n            color: #fff;\n            text-align:center;\n            width: 50px;\n            height: 50px;\n            -webkit-transition:all .2s;\n                    transition:all .2s;            \n        }\n\n        .builder-wrapper:hover{\n            background-color: rgba(0,0,0,0.6);\n            -webkit-box-shadow: 2px 2px 2px 2px #000;            \n                    box-shadow: 2px 2px 2px 2px #000;   \n            width: 220px;\n            height: 110px;                     \n        }\n\n        .builder-json{\n            font-weight: 550;\n            line-height: 55px;\n            -webkit-transition:all 0.2s ease;\n                    transition:all 0.2s ease;\n            width:90%;\n        }\n        .builder-json:hover{\n            background-color:rgba(0,0,0,0.7);\n            cursor: pointer;\n        }\n\n        .builder-wrapper input{ \n            color:#fff;\n            border: 0;\n            outline:none;\n        }\n        \n        .builder-json,\n        .builder-wrapper input{\n            margin:auto;\n            margin-top:10px;\n            border-radius : 3px;\n            background-color: #333;\n            text-decoration: none;                        \n        }\n                            \n    </style>      \n    ";
+    return "\n    <style>\n        .builder-wrapper{\n            position:fixed;       \n            bottom:0;\n            right:0;\n            color: #fff;\n            text-align:center;\n            width: 50px;\n            height: 50px;\n            -webkit-transition:all .2s;\n                    transition:all .2s;            \n        }\n\n        .builder-wrapper:hover{\n            background-color: rgba(0,0,0,0.6);\n            -webkit-box-shadow: 2px 2px 2px 2px #000;            \n                    box-shadow: 2px 2px 2px 2px #000;   \n            width: 220px;\n            height: 170px;                     \n        }\n\n        .builder-json{\n            font-weight: 550;\n            line-height: 55px;\n            -webkit-transition:all 0.2s ease;\n                    transition:all 0.2s ease;\n            width:90%;\n        }\n        .builder-json:hover{\n            background-color:rgba(0,0,0,0.7);\n            cursor: pointer;\n        }\n\n        .builder-wrapper input{ \n            color:#fff;\n            border: 0;\n            outline:none;\n        }\n        \n        .builder-json,\n        .builder-wrapper input{\n            margin:auto;\n            margin-top:10px;\n            border-radius : 3px;\n            background-color: #333;\n            text-decoration: none;                        \n        }\n                            \n    </style>      \n    ";
 }
 
 function Builder(element, data) {
     // TODO : Custom EventListender
     setTimeout(function () {
-        var get = element.querySelector('.builder-json'), copy = element.querySelector('.builder-json-copy');
+        var get = element.querySelector('.builder-json.get'), copy = element.querySelector('.builder-json-copy'), load = element.querySelector('.builder-json.load');
         get.addEventListener('click', function () { return copy.value = JSON.stringify(data); });
         copy.addEventListener('click', function (e) { return e.target.setSelectionRange(0, e.target.value.length); });
+        load.addEventListener('click', function () {
+            var json = prompt('불러오실 JSON 데이터를 등록해주세요', '');
+            if (json === null || json === '')
+                throw 'invalid JSON string';
+            element.innerHTML = Template(element, JSON.parse(json));
+            copy.value = '';
+        });
     }, 100);
-    return "\n        " + BuilderStyle() + "\n        <div class=\"builder-wrapper\">\n            <div class=\"builder-json\">JSON\uC73C\uB85C \uB370\uC774\uD130 \uCD9C\uB825\uBC1B\uAE30</div>\n            <input class=\"builder-json-copy\">\n        </div>\n    ";
+    return "\n        " + BuilderStyle() + "\n        <div class=\"builder-wrapper\">\n            <div class=\"builder-json get\">JSON\uC73C\uB85C \uB370\uC774\uD130 \uCD9C\uB825\uBC1B\uAE30</div>\n            <input class=\"builder-json-copy\">\n            <div class=\"builder-json load\">\uB370\uC774\uD130 \uBD88\uB7EC\uC624\uAE30</div>            \n        </div>\n    ";
 }
 
 function Template(element, data) {

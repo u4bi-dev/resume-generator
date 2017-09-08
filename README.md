@@ -11,7 +11,7 @@ npm run build
 ##### resume.js
 ```javascript
     const resume = new Resume(element);
-    resume.render(data);
+    resume.render(data); // HTTP Link , JSON Object, JSON String
 ```
 
 ##### JSON Rule

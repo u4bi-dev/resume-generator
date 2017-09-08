@@ -4,9 +4,7 @@
     <title> Resume </title>
 
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
-    
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    
+
     <script src="dist/resume.js"></script>
 
   </head>
@@ -15,16 +13,9 @@
       <div id="resume"></div>
 
       <script>
-          axios.get('./data.json').then( (resp) => {
-                           
-              const data = resp.data,
-                    element = document.getElementById('resume');
 
-              const resume = new Resume(element);
-
-              resume.render(data);
-
-          });
+          const resume = new Resume(document.getElementById('resume'));
+          resume.render('data.json');
 
       </script>
   </body>

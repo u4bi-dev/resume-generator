@@ -10,11 +10,29 @@ function __extends(d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 }
 
+function Loader(data) {
+    var json = '{}';
+    if (typeof data === 'object')
+        return data;
+    data.charAt(0) === '{' && data.charAt(data.length - 1) === '}' ? json = data : (function () {
+        if (data.replace(/(\s*)/g, '').length === 0)
+            return json;
+        var xhttp = window['XMLHttpRequest'] ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+        xhttp.onreadystatechange = function (e) {
+            if (e.currentTarget['readyState'] === 4)
+                json = e.currentTarget['status'] === 200 ? e.currentTarget['response'] : '{}';
+        };
+        xhttp.open('GET', data, false);
+        xhttp.send();
+    })();
+    return JSON.parse(json);
+}
+
 var Renderer = (function () {
     function Renderer() {
     }
     Renderer.prototype.render = function (data) {
-        this.data = data;
+        this.data = Loader(data);
         this._render();
     };
     Renderer.prototype._render = function () {
@@ -132,8 +150,7 @@ function Builder(element, data) {
             put.focus();
         });
         success.addEventListener('click', function () {
-            var json = put.value !== '' ? put.value : '{}';
-            element.innerHTML = Template(element, JSON.parse(json));
+            element.innerHTML = Template(element, Loader(put.value));
             success.parentElement.style.display = 'none';
             copy.value = '';
         });

@@ -1,5 +1,6 @@
 import BuilderStyle from './BuilderStyle';
 import Template from '../Template';
+import Loader from '../Loader';
 
 export default function Builder(element, data) {
     
@@ -22,10 +23,8 @@ export default function Builder(element, data) {
         });
 
         success.addEventListener('click', () => {
-                         
-            let json = put.value !== '' ? put.value : '{}';
-
-            element.innerHTML = Template(element, JSON.parse(json));
+            
+            element.innerHTML = Template(element, Loader(put.value));
             
             success.parentElement.style.display = 'none';
             copy.value = '';

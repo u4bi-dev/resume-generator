@@ -1,3 +1,5 @@
+import Loader from './Loader';
+
 export class Renderer{
     
     data : Object;
@@ -8,7 +10,7 @@ export class Renderer{
 
     render(data) : void{
                         
-        this.data = data;
+        this.data = Loader(data);
 
         this._render();
     }

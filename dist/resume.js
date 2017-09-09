@@ -58,12 +58,12 @@ function Template$1(data) {
     function icon(item) {
         var result = '';
         Object.keys(item).map(function (entry) {
-            var html = "<li>\n                <a href=\"" + item[entry] + "\" itemprop=\"url\" target=\"_blank\">\n            \n                <svg class=\"icon\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\"\n                    viewBox=\"0 0 28 28\" enable-background=\"new 0 0 28 28\" xml:space=\"preserve\" width=\"28\">\n                \n                    <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" fill=\"#D1CECC\" d=\"" + iconPath[entry] + "\"/>\n                \n                </svg>\n\n                </a>\n            </li>";
+            var html = "<li>\n                <a href=\"" + item[entry] + "\" target=\"_blank\">\n            \n                <svg class=\"icon\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\"\n                    viewBox=\"0 0 28 28\" enable-background=\"new 0 0 28 28\" xml:space=\"preserve\" width=\"28\">\n                \n                    <path fill-rule=\"evenodd\" clip-rule=\"evenodd\" fill=\"#D1CECC\" d=\"" + iconPath[entry] + "\"/>\n                \n                </svg>\n\n                </a>\n            </li>";
             result += html;
         });
         return result;
     }
-    return " \n        <header class=\"top-header\">\n        \n        <img src=\"" + (data.avatar || '') + "\" class=\"top-avatar\">\n        \n        <h1>" + (data.name || '') + "</h1>\n        <div class=\"top-bar\">\n            <h2>" + (data.job || '') + "</h2>\n            <ul>\n                " + icon(data.icon || {}) + "\n            </ul>\n        </div>\n        <div class=\"top-content\"><p>" + (data.bio || '') + "</p></div>\n        \n        <a class=\"top-button\" href=\"mailto:" + (data.email || '') + "\">Contact me</a>\n\n        </header>\n    ";
+    return " \n        <header class=\"top-header\">\n        \n        <img src=\"" + (data.avatar || '') + "\" class=\"top-avatar\">\n        \n        <h1>" + (data.name || '') + "</h1>\n        <div class=\"top-bar\">\n            <h2>" + (data.job || '') + "</h2>\n            <ul>\n                " + icon(data.icon || {}) + "\n            </ul>\n        </div>\n        <div class=\"top-content\"><p>" + (data.bio || '') + "</p></div>\n        \n        <a class=\"top-button \" href=\"mailto:" + (data.email || '') + "\" target=\"_blank\">Contact me</a>\n\n        </header>\n    ";
 }
 
 function Footer(data) {
@@ -101,7 +101,7 @@ function ExperienceSection(data) {
     function item() {
         var result = '';
         data.map(function (data) {
-            var html = "\n                <div>\n                    <h3>" + (data.name || '') + "</a></h3>\n                    <h4>" + (data.date = data.date || {}, data.date.start || '') + " &mdash; " + (data.date.end || '') + " - " + (data.address || '') + "</h4>\n                    <ul>\n                        " + list(data.bios || []) + "\n                    </ul>\n                </div>\n            ";
+            var html = "\n                <div>\n                    <h3>" + (data.name || '') + "</a></h3>\n                    <h4>" + (data.job || '') + " &bull; " + (data.date = data.date || {}, data.date.start || '') + " &mdash; " + (data.date.end || '') + " - " + (data.address || '') + "</h4>\n                    <ul>\n                        " + list(data.bios || []) + "\n                    </ul>\n                </div>\n            ";
             result += html;
         });
         return result;

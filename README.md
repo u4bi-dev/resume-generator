@@ -1,3 +1,5 @@
+![Alt text](https://drive.google.com/uc?export=view&id=0B3XkfYbZArSfdTc4ZVV4X0V0UGc)
+
 ##### install
 ```
 npm install
@@ -54,6 +56,7 @@ npm run build
     "experience" : [
         {
             "name" : "Test Company 1",
+            "job"  : "Frontend Developer",
             "date" : {
                 "start" : "2017/09/06",
                 "end"   : "2017/09/07"

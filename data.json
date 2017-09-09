@@ -61,6 +61,7 @@
     "experience" : [
       {
         "name" : "Test Company 1",
+        "job"  : "Frontend Developer",
         "date" : {
           "start" : "2017/09/06",
           "end"   : "2017/09/07"
@@ -72,6 +73,7 @@
       },
       {
         "name" : "Test Company 2",
+        "job"  : "Software Developer",        
         "date" : {
           "start" : "2017/09/06",
           "end"   : "2017/09/07"
@@ -83,6 +85,7 @@
       },
       {
         "name" : "Test Company 3",
+        "job"  : "UI/UX Designer",        
         "date" : {
           "start" : "2017/09/06",
           "end"   : "2017/09/07"

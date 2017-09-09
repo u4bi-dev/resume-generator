@@ -8,7 +8,7 @@ export default function Template(data) {
         Object.keys(item).map( (entry) => {
             
             let html = `<li>
-                <a href="${ item[entry] }" itemprop="url" target="_blank">
+                <a href="${ item[entry] }" target="_blank">
             
                 <svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                     viewBox="0 0 28 28" enable-background="new 0 0 28 28" xml:space="preserve" width="28">
@@ -41,7 +41,7 @@ export default function Template(data) {
         </div>
         <div class="top-content"><p>${ data.bio || '' }</p></div>
         
-        <a class="top-button" href="mailto:${ data.email || '' }">Contact me</a>
+        <a class="top-button " href="mailto:${ data.email || '' }" target="_blank">Contact me</a>
 
         </header>
     `;

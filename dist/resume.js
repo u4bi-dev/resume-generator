@@ -12,6 +12,8 @@ function __extends(d, b) {
 
 function Loader(data) {
     var json = '{}';
+    if (!data)
+        return json;
     if (typeof data === 'object')
         return data;
     data.charAt(0) === '{' && data.charAt(data.length - 1) === '}' ? json = data : (function () {
@@ -28,12 +30,30 @@ function Loader(data) {
     return JSON.parse(json);
 }
 
+function loadScript(src) {
+    return new Promise(function (resolve, reject) {
+        var script = document.createElement('script');
+        script.async = false;
+        script.src = src;
+        script.onload = resolve;
+        script.onerror = reject;
+        document.head.appendChild(script);
+    });
+}
+
 var Renderer = (function () {
-    function Renderer() {
+    function Renderer(parent) {
+        if (!parent)
+            throw 'invalid parent';
+        this.parent = parent;
     }
     Renderer.prototype.render = function (data) {
+        var _this = this;
         this.data = Loader(data);
-        this._render();
+        this.shadowDOM ? this._render() : (function () {
+            var attach = function () { _this.shadowDOM = _this.parent.attachShadow({ mode: 'open' }); _this._render(); };
+            !!HTMLElement.prototype.attachShadow ? attach() : loadScript('https://cdn.rawgit.com/webcomponents/shadydom/master/shadydom.min.js').then(function (e) { return loadScript('https://cdn.rawgit.com/webcomponents/shadycss/master/scoping-shim.min.js').then(function (e) { return attach(); }); });
+        })();
     };
     Renderer.prototype._render = function () {
         '_render override';
@@ -168,38 +188,19 @@ function Template(element, data) {
     return "\n        " + Style() + "\n        <div class=\"wrapper\">\n          <!-- \uC0C1\uB2E8 \uD5E4\uB354 -->\n          " + Template$1(data.header || {}) + "\n          <!-- \uD504\uB85C\uC81D\uD2B8 \uC139\uC158 -->\n          " + ProjectSection(data.projects || []) + "\n          <!-- \uAE30\uC220 \uC139\uC158 -->\n          " + SkillSection(data.skills || []) + "\n          <!-- \uACBD\uD5D8 \uC139\uC158 -->\n          " + ExperienceSection(data.experience || []) + " \n          <!-- \uAD50\uC721 \uBC0F \uC778\uC99D \uC139\uC158 -->\n          " + EduAndCertSection(data.eduandcert || {}) + "\n          <!-- \uD558\uB2E8 \uD478\uD130 -->\n          " + Footer(data.footer || {}) + "\n          <!-- \uBE4C\uB354 -->\n          " + isLive(data.footer || {}) + "\n        </div>        \n        ";
 }
 
-function loadScript(src) {
-    return new Promise(function (resolve, reject) {
-        var script = document.createElement('script');
-        script.async = false;
-        script.src = src;
-        script.onload = resolve;
-        script.onerror = reject;
-        document.head.appendChild(script);
-    });
-}
-
-var Resume$1 = (function (_super) {
-    __extends(Resume, _super);
-    function Resume(parent) {
-        _super.call(this);
-        if (!parent)
-            throw 'invalid parent';
-        this.parent = parent;
+var ResumeRenderer$1 = (function (_super) {
+    __extends(ResumeRenderer, _super);
+    function ResumeRenderer(parent) {
+        _super.call(this, parent);
     }
-    Resume.prototype._render = function () {
-        var _this = this;
+    ResumeRenderer.prototype._render = function () {
         if (!this.parent)
             throw 'invalid parent element';
-        !!HTMLElement.prototype.attachShadow ? this.load() : loadScript('https://cdn.rawgit.com/webcomponents/shadydom/master/shadydom.min.js').then(function (e) { return loadScript('https://cdn.rawgit.com/webcomponents/shadycss/master/scoping-shim.min.js').then(function (e) { return _this.load(); }); });
-    };
-    Resume.prototype.load = function () {
-        this.shadowDOM = this.parent.attachShadow({ mode: 'open' });
         this.shadowDOM.innerHTML = Template(this.shadowDOM, this.data);
     };
-    return Resume;
+    return ResumeRenderer;
 }(Renderer));
 
-return Resume$1;
+return ResumeRenderer$1;
 
 })));

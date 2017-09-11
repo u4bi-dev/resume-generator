@@ -1,3 +1,3 @@
-import { Resume } from './Resume';
+import { ResumeRenderer } from './ResumeRenderer';
 
-export default Resume;
+export default ResumeRenderer;

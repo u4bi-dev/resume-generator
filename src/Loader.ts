@@ -2,6 +2,7 @@ export default function Loader(data) {
     
     let json = '{}';
     
+    if(!data) return json;
     if(typeof data === 'object' ) return data;
 
     data.charAt(0) === '{' && data.charAt(data.length-1) === '}' ? json = data : ( () => {

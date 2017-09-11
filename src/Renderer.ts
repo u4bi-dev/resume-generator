@@ -1,10 +1,18 @@
 import Loader from './Loader';
+import loadScript from './util/loadScript';
 
 export class Renderer{
-    
-    data : Object;
 
-    constructor(){
+    
+    protected parent : HTMLElement;
+    protected shadowDOM : any;    
+    protected data : Object;
+
+    constructor(parent){
+        
+        if(!parent) throw 'invalid parent';
+
+        this.parent = parent;
 
     }
 
@@ -12,7 +20,12 @@ export class Renderer{
                         
         this.data = Loader(data);
 
-        this._render();
+        this.shadowDOM ? this._render() : ( () => {
+            
+            let attach = () => { this.shadowDOM = this.parent.attachShadow({mode: 'open'}); this._render(); };
+            !!HTMLElement.prototype.attachShadow ? attach() : loadScript('https://cdn.rawgit.com/webcomponents/shadydom/master/shadydom.min.js').then( e => loadScript('https://cdn.rawgit.com/webcomponents/shadycss/master/scoping-shim.min.js').then( e => attach() ));
+            
+        })();
     }
 
     protected _render() : void{

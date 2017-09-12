@@ -24,7 +24,9 @@ export default function SkillSection(data) {
         <header>
             <h2>Skills</h2>
         </header>
-        ${ item() }         
+        <div class="skills-wrapper">
+            ${ item() }
+        </div>         
         </section>         
     `;
 }

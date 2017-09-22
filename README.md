@@ -11,9 +11,13 @@ npm run build
 ```
 
 ##### resume.js
+
+```html
+<script src="https://cdn.rawgit.com/u4bi-dev/resume-generator/master/dist/resume.js"></script>
+```
 ```javascript
-    const resume = new Resume(element);
-    resume.render(data); // HTTP Link , JSON Object, JSON String
+var resume = new Resume(element);
+resume.render(data); // HTTP Link , JSON Object, JSON String
 ```
 
 ##### JSON Rule
@@ -64,7 +68,7 @@ npm run build
             "address" : "Yeoksam, Seoul",
             "bios" : [
                 "Test Comment 1",
-                "Test Comment 2",
+                "Test Comment 2"
             ]
         }
     ],

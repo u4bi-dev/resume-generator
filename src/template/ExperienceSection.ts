@@ -8,7 +8,7 @@ export default function ExperienceSection(data) {
             
             let html = `
                 <div>
-                    <h3>${ data.name || '' }</a></h3>
+                    <a  ${ data.link ? 'href="'+data.link : '' } " target="_blank" ><h3>${ data.name || '' }</a></h3></a>
                     <h4>${ data.job || '' } &bull; ${ data.date = data.date || {} , data.date.start || '' } &mdash; ${ data.date.end || '' } - ${ data.address || '' }</h4>
                     <ul>
                         ${ list(data.bios || [] ) }

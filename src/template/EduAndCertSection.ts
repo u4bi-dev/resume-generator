@@ -10,7 +10,7 @@ export default function EduAndCertSection(data) {
 
         data.edu.map( (data) => { 
             let html = `
-                 <h3>${ data.title || '' }</h3>
+                 <a  ${ data.link ? 'href="'+data.link : '' } " target="_blank" ><h3>${ data.title || '' }</a></h3></a>
                  <h4>${ data.name || '' } &bull; ${ data.date = data.date || {} , data.date.start || '' } - ${ data.date.end || '' }</h4>
              `;
 
@@ -19,7 +19,7 @@ export default function EduAndCertSection(data) {
 
         data.cert.map( (data) => { 
             let html = `
-                <h3>${ data.title || '' }</h3>
+                <a  ${ data.link ? 'href="'+data.link : '' } " target="_blank" ><h3>${ data.title || '' }</a></h3></a>
                 <h4>${ data.name || '' } &bull; ${ data.date || '' }</h4>
             `;
 

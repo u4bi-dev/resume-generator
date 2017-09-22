@@ -41,6 +41,7 @@ resume.render(data); // HTTP Link , JSON Object, JSON String
     "projects" : [
         {
             "name" : "Test Project 1",
+            "link" : "https://github.com/u4bi",
             "date" : {
                 "start" : "2017/09/06",
                 "end"   : "2017/09/07"
@@ -60,6 +61,7 @@ resume.render(data); // HTTP Link , JSON Object, JSON String
     "experience" : [
         {
             "name" : "Test Company 1",
+            "link" : "https://github.com/u4bi",
             "job"  : "Frontend Developer",
             "date" : {
                 "start" : "2017/09/06",
@@ -76,6 +78,7 @@ resume.render(data); // HTTP Link , JSON Object, JSON String
         "edu" : [
             {
                 "title" : "Test College",
+                "link" : "https://github.com/u4bi",
                 "name"  : "Test lang",
                 "date" : {
                     "start" : "2017/09/06",
@@ -87,6 +90,7 @@ resume.render(data); // HTTP Link , JSON Object, JSON String
         "cert" : [
             {
                 "title" : "Test Campus",
+                "link" : "https://github.com/u4bi",
                 "name" : "Test lang",
                 "date" : "2017/09/07"
             }

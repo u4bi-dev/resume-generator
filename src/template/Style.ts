@@ -177,8 +177,13 @@ export default function Style(){
         section h4{ 
         font-family : "Courier New", Courier, monospace;	
         }
-                     
-    </style>      
+    
+        a{ 
+        color: #333;
+        text-decoration:none;
+        }
+        
+    </style>
     `;
 
 }

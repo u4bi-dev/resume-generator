@@ -23,7 +23,7 @@ export class Renderer{
         this.shadowDOM ? this._render() : ( () => {
             
             let attach = () => { this.shadowDOM = this.parent.attachShadow({mode: 'open'}); this._render(); };
-            !!HTMLElement.prototype.attachShadow ? attach() : loadScript('https://cdn.rawgit.com/webcomponents/shadydom/master/shadydom.min.js').then( e => loadScript('https://cdn.rawgit.com/webcomponents/shadycss/master/scoping-shim.min.js').then( e => attach() ));
+            !!HTMLElement.prototype.attachShadow ? attach() : loadScript('https://cdn.rawgit.com/webcomponents/shadydom/master/shadydom.min.js', () => loadScript('https://cdn.rawgit.com/webcomponents/shadycss/master/scoping-shim.min.js', () => attach() ) );
             
         })();
     }

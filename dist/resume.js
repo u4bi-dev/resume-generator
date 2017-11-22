@@ -30,15 +30,32 @@ function Loader(data) {
     return JSON.parse(json);
 }
 
-function loadScript(src) {
-    return new Promise(function (resolve, reject) {
-        var script = document.createElement('script');
-        script.async = false;
-        script.src = src;
-        script.onload = resolve;
-        script.onerror = reject;
-        document.head.appendChild(script);
-    });
+// IE not Support
+// export default function loadScript(src){
+//     return new Promise(function(resolve, reject) {
+//         const script = document.createElement('script');
+//         script.async = false;
+//         script.src = src;
+//         script.onload = resolve;
+//         script.onerror = reject;
+//         document.head.appendChild(script);
+//     });
+// }
+function loadScript(url, callback) {
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    if (script.readyState) {
+        script.onreadystatechange = function () {
+            if (script.readyState == 'loaded' || script.readyState == 'complete') {
+                script.onreadystatechange = null;
+                callback();
+            }
+        };
+    }
+    else
+        script.onload = function () { return callback(); };
+    script.src = url;
+    document.getElementsByTagName('head')[0].appendChild(script);
 }
 
 var Renderer = (function () {
@@ -52,7 +69,7 @@ var Renderer = (function () {
         this.data = Loader(data);
         this.shadowDOM ? this._render() : (function () {
             var attach = function () { _this.shadowDOM = _this.parent.attachShadow({ mode: 'open' }); _this._render(); };
-            !!HTMLElement.prototype.attachShadow ? attach() : loadScript('https://cdn.rawgit.com/webcomponents/shadydom/master/shadydom.min.js').then(function (e) { return loadScript('https://cdn.rawgit.com/webcomponents/shadycss/master/scoping-shim.min.js').then(function (e) { return attach(); }); });
+            !!HTMLElement.prototype.attachShadow ? attach() : loadScript('https://cdn.rawgit.com/webcomponents/shadydom/master/shadydom.min.js', function () { return loadScript('https://cdn.rawgit.com/webcomponents/shadycss/master/scoping-shim.min.js', function () { return attach(); }); });
         })();
     };
     Renderer.prototype._render = function () {

@@ -1,22 +1,28 @@
 {
-  "name": "rg",
-  "version": "1.0.0",
-  "description": "",
-  "main": "rollup.config.js",
+  "name": "resume-maker",
+  "version": "1.0.4",
+  "description": "resume-maker",
+  "main": "dist/resume.js",
   "scripts": {
     "build": "rollup -c"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/u4bi-dev/resume-generate.git"
+    "url": "git+https://github.com/u4bi-dev/resume-maker.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "resume",
+    "generator",
+    "maker",
+    "resume-generator",
+    "resume-maker"
+  ],
+  "author": "Myungjae Yu",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/u4bi-dev/resume-generate/issues"
+    "url": "https://github.com/u4bi-dev/resume-maker/issues"
   },
-  "homepage": "https://github.com/u4bi-dev/resume-generate#readme",
+  "homepage": "https://github.com/u4bi-dev/resume-maker#readme",
   "devDependencies": {
     "rollup": "^0.49.2",
     "rollup-plugin-typescript": "^0.8.1"

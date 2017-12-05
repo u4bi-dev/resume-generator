@@ -1,19 +1,29 @@
+# resume-maker
+
+[![NPM Version](https://img.shields.io/npm/v/resume-maker.svg)](https://www.npmjs.com/package/resume-maker)
+
 ![Alt text](https://drive.google.com/uc?export=view&id=0B3XkfYbZArSfdTc4ZVV4X0V0UGc)
 
-##### install
-```
-npm install
+## Install
+
+```bash
+$ git clone https://github.com/u4bi-dev/resume-maker.git resume
 ```
 
-##### build
+```bash
+$ npm install
 ```
-npm run build
+
+## build
+
+```bash
+$ npm run build
 ```
 
 ##### resume.js
 
 ```html
-<script src="https://cdn.rawgit.com/u4bi-dev/resume-generator/master/dist/resume.js"></script>
+<script src="https://cdn.rawgit.com/u4bi-dev/resume-maker/master/dist/resume.js"></script>
 ```
 ```javascript
 var resume = new Resume(element);
@@ -103,3 +113,6 @@ resume.render(data); // HTTP Link , JSON Object, JSON String
 }
 
 ```
+
+## License
+[MIT](LICENSE)

@@ -115,4 +115,5 @@ resume.render(data); // HTTP Link , JSON Object, JSON String
 ```
 
 ## License
+
 [MIT](LICENSE)

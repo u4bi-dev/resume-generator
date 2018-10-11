@@ -2,6 +2,8 @@
 
 [![NPM Version](https://img.shields.io/npm/v/resume-maker.svg)](https://www.npmjs.com/package/resume-maker)
 
+[![NPM Badge](https://nodei.co/npm/resume-maker.png?downloads=true)](https://www.npmjs.com/package/resume-maker)
+
 ![Alt text](https://drive.google.com/uc?export=view&id=0B3XkfYbZArSfdTc4ZVV4X0V0UGc)
 
 ## Install
